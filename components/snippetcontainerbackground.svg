@@ -1,0 +1,23 @@
+<svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="232"
+      height="238"
+      viewBox="0 0 232 238"
+      fill="none"
+    >
+      <path d="M232 0V233L227 238V5H0L5 0H232Z" fill="black" />
+      <path d="M0.5 5.5H5.5V237.5H0.5V5.5Z" fill="#309AC5" stroke="black" />
+      <rect
+        x="5.5"
+        y="5.5"
+        width="221"
+        height="227"
+        fill="#87CEEB"
+        stroke="black"
+      />
+      <path
+        d="M1.13595 237.5L5.71533 232.5H226.495V237.5H1.13595Z"
+        fill="#5DB9DF"
+        stroke="black"
+      />
+    </svg>
