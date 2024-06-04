@@ -109,7 +109,6 @@ export default {
   methods: {
     handleClick() {
       this.isClicked = !this.isClicked; // Toggle the state on click
-      console.log("click", this.isClicked);
     },
     handleMouseUp() {
       this.isClicked = !this.isClicked;
@@ -117,12 +116,10 @@ export default {
     handleMouseover() {
       // Handle mouseover event (optional)
       this.isHovering = true;
-      console.log("hover", this.isHovering);
     },
     handleMouseleave() {
       // Handle mouseleave event (optional)
       this.isHovering = false;
-      console.log("hover", this.isHovering);
     },
   },
 };

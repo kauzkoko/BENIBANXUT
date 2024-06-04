@@ -2,24 +2,17 @@
   <div class="snippetContainer">
     <div class="container-background">
       <div class="grid">
-        <div class="empty-thumbnail" v-for="n in 16"><slot></slot></div>
+        <div class="empty-thumbnail" v-for="(n, index) in 16" :key="index">
+          <slot />
+        </div>
       </div>
     </div>
   </div>
 </template>
-<script>
-import snippetThumbnail from "./snippetThumbnail.vue";
 
-export default {
-  name: "snippetContainer",
-  components: {
-    snippetThumbnail,
-  },
-};
-</script>
 <style scoped>
 .container-background {
-  background-image: url("snippetcontainerbackground.svg");
+  background-image: url("~/assets/snippetcontainerbackground.svg");
   width: 232px; /* Set your desired width */
   height: 238px; /* Set your desired height */
 

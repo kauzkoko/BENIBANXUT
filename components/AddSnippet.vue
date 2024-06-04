@@ -100,7 +100,6 @@ export default {
     handleMouseover() {
       // Handle mouseover event (optional)
       this.isHovering = true;
-      console.log(this.isHovering);
     },
     handleMouseleave() {
       // Handle mouseleave event (optional)

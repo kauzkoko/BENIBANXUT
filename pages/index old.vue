@@ -12,38 +12,28 @@
           <div class="containter-container">
             <MiniBalkenContainer>
               <MiniBalken
-                v-for="(balken, index) in balkenArray"
-                :index="index"
-                :balken="balken"
-                @click="selectedIndex = index"
-                :selected="selectedIndex === index"
+                :attack="childCount"
+                :intensity="childCount2"
+                :decay="childCount3"
               />
             </MiniBalkenContainer>
           </div>
           <div class="slider-container">
             <OrangeSlider
-              :index="selectedIndex"
-              type="attack"
               text="Attack"
               class="slider"
+              @incremented="updateCountFromChild"
             />
             <OrangeSlider
-              :index="selectedIndex"
-              type="intensity"
               text="Intensity"
               class="slider"
+              @incremented="updateCountFromChild2"
             />
+            <OrangeSlider text="Duration" class="slider" />
             <OrangeSlider
-              :index="selectedIndex"
-              type="duration"
-              text="Duration"
-              class="slider"
-            />
-            <OrangeSlider
-              :index="selectedIndex"
-              type="decay"
               text="Decay"
               class="slider"
+              @incremented="updateCountFromChild3"
             />
           </div>
           <div class="aidd-play-container">
@@ -55,17 +45,31 @@
       <div class="text-content">
         <RedButton />
         <RedButtonMacBook />
+        <SnippetThumbnail :attack="childCount" />
         <AddSnippet />
+        <p>{{ childCount }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const selectedIndex = ref(0);
-const store = useGstore();
-const { balkenArray } = storeToRefs(store);
-console.log(balkenArray.value);
+const sliderLabel = ref("Decay");
+
+const childCount = ref(0);
+const childCount2 = ref(0);
+const childCount3 = ref(0);
+
+// Define the updateCountFromChild function
+const updateCountFromChild = (value) => {
+  childCount.value = value;
+};
+const updateCountFromChild2 = (value) => {
+  childCount2.value = value;
+};
+const updateCountFromChild3 = (value) => {
+  childCount3.value = value;
+};
 </script>
 
 <style scoped>

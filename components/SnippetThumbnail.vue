@@ -55,7 +55,7 @@
         <path id="Polygon 9" d="M3 0H39V34L36 37V3H0L3 0Z" fill="black" />
       </g>
     </svg>
-    <svg
+    <!-- <svg
       v-if="isHovering && !isClicked"
       @mouseleave="handleMouseleave"
       @mousedown="handleClick"
@@ -147,13 +147,11 @@
         stroke="black"
       />
       <path d="M3 0H39V34L36 37V3H0L3 0Z" fill="black" />
-    </svg>
+    </svg> -->
   </div>
 </template>
 
 <script setup>
-import { defineProps, computed, ref } from "vue";
-
 const props = defineProps({
   attack: {
     type: Number,
@@ -172,7 +170,6 @@ const attack1 = computed(() => props.attack);
 const intensity = computed(() => props.intensity);
 const decay = computed(() => props.decay);
 
-console.log(props.attack);
 const attackPercent = computed(() => attack1.value);
 const attackValue = computed(() => (32.5 / 100) * attackPercent.value);
 const heightAttack = computed(() => attackValue.value);
@@ -191,7 +188,6 @@ const decayY = computed(() => 4 + (32.5 - decayValue.value));
 // Define reactive variables
 const isClicked = ref(false);
 const isHovering = ref(false);
-const egal = 1131;
 
 // Define event handling functions
 const handleClick = () => {

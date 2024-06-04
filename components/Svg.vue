@@ -79,11 +79,6 @@ const skewedRect = computed(
     "95.207" +
     " L5.20711 90.5 H45.5 V95.5 H0.5 V95.2071 Z"
 );
-console.log(accc);
-
-onMounted(() => {
-  console.log(accc.value);
-});
 </script>
 
 <style scoped>
