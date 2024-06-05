@@ -1,11 +1,11 @@
 <template>
   <div class="container font-sans">
-    <div class="sidebar">
+    <!-- <div class="sidebar">
       <Backbutton />
       <div class="sidebar-title-container">
         <p>Getting started</p>
       </div>
-    </div>
+    </div> -->
     <div class="main-content">
       <div class="toggle-container">
         <div class="controls-container">
@@ -32,19 +32,19 @@
               text="Attack"
               class="slider"
             />
-            <OrangeSlider
+            <Slider
               :index="selectedIndex"
               type="intensity"
               text="Intensity"
               class="slider"
             />
-            <OrangeSlider
+            <Slider
               :index="selectedIndex"
               type="duration"
               text="Duration"
               class="slider"
             />
-            <OrangeSlider
+            <Slider
               :index="selectedIndex"
               type="decay"
               text="Decay"
@@ -66,10 +66,10 @@
 </template>
 
 <script setup>
+import "@unocss/reset/normalize.css";
 const selectedIndex = ref(0);
 const store = useGstore();
-const { balkenArray, activeBalken } = storeToRefs(store);
-console.log(activeBalken.value);
+const { balkenArray } = storeToRefs(store);
 const deleteBalkenByIndex = (index) => {
   balkenArray.value.splice(index);
 };
@@ -86,10 +86,20 @@ const addBalken = () => {
 };
 </script>
 
-<style scoped>
+<style>
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw;
+  height: 100vh;
+}
+
 .container {
-  padding: 20px;
-  height: 90vh;
+  margin: 0;
+  max-width: 100vw;
+  /* padding: 20px; */
+  height: 100vh;
   display: flex;
   background-color: black; /* Set background color of the entire layout to black */
 }

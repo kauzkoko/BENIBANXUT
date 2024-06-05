@@ -41,7 +41,8 @@ const updateSlider = (event) => {
 
 watch(sliderValue, (value) => {
   console.log(value);
-  fillerBottom.value = useMap(value, 0, 100, -170, 0);
+  // map function beni stuff find de richtig wert
+  fillerBottom.value = useMap(value, 0, 100, -180, 0);
   balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
 });
 
