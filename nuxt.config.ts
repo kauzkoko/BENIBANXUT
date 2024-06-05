@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
+
   modules: [
     "@unocss/nuxt",
     "@pinia/nuxt",
@@ -13,5 +14,8 @@ export default defineNuxtConfig({
   },
   piniaPersistedstate: {
     storage: "localStorage",
+  },
+  devServer: {
+    port: 4011,
   },
 });

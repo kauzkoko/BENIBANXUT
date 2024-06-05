@@ -26,7 +26,7 @@
             </MiniBalkenContainer>
           </div>
           <div class="slider-container">
-            <OrangeSlider
+            <Slider
               :index="selectedIndex"
               type="attack"
               text="Attack"
