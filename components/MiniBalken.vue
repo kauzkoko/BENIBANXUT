@@ -70,9 +70,11 @@ const props = defineProps({
   },
 });
 
+const emits = defineEmits(["delete"]);
 const el = ref(null);
 onLongPress(el, () => {
   console.log("long press");
+  if (props.index !== 0) emits("delete", props.index);
 });
 
 const attackHeight = computed(() => (32.5 / 100) * props.balken.attack);

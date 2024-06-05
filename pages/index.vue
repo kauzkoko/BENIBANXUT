@@ -17,6 +17,11 @@
                 :balken="balken"
                 @click="selectedIndex = index"
                 :selected="selectedIndex === index"
+                @delete="deleteBalkenByIndex"
+              />
+              <AddSnippet
+                v-if="balkenArray.length < 16"
+                @addBalken="addBalken"
               />
             </MiniBalkenContainer>
           </div>
@@ -55,7 +60,6 @@
       <div class="text-content">
         <RedButton />
         <RedButtonMacBook />
-        <AddSnippet />
       </div>
     </div>
   </div>
@@ -64,8 +68,22 @@
 <script setup>
 const selectedIndex = ref(0);
 const store = useGstore();
-const { balkenArray } = storeToRefs(store);
-console.log(balkenArray.value);
+const { balkenArray, activeBalken } = storeToRefs(store);
+console.log(activeBalken.value);
+const deleteBalkenByIndex = (index) => {
+  balkenArray.value.splice(index);
+};
+const addBalken = () => {
+  console.log(balkenArray.value);
+  if (balkenArray.value.length < 17)
+    balkenArray.value.push({
+      active: true,
+      attack: 40,
+      intensity: 40,
+      duration: 40,
+      decay: 40,
+    });
+};
 </script>
 
 <style scoped>
