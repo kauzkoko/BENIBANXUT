@@ -4,6 +4,9 @@
     <div class="thumb" :style="{ bottom: sliderValue + '%' }"></div>
     <div class="top"></div>
     <div class="bottom"></div>
+    <div class="label">
+      <p>Attack</p>
+    </div>
   </div>
 </template>
 
@@ -13,8 +16,6 @@ const sliderRef = ref(null);
 const fillerBottom = ref(-95);
 const store = useGstore();
 const { balkenArray } = storeToRefs(store);
-const { y } = useMouse();
-const { height } = useWindowSize();
 
 const props = defineProps({
   text: {
@@ -34,20 +35,21 @@ const props = defineProps({
 const updateSlider = (event) => {
   const rect = sliderRef?.value.getBoundingClientRect();
   const offsetY = event.clientY - rect.top;
-  console.log(y.value - rect.top);
-  const winHeight = rect.height;
+  const height = rect.height;
   sliderValue.value = Math.max(
     0,
-    Math.min(100, ((winHeight - offsetY) / winHeight) * 100)
+    Math.min(100, ((height - offsetY) / height) * 100)
   );
-  let possibleValue = 690 - y.value - rect.top;
-  // console.log(possibleValue);
-  fillerBottom.value = possibleValue;
-  fillerBottom.value =
-    possibleValue < -200 ? -200 : possibleValue > 0 ? 0 : possibleValue;
-  balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
-  // balkenArray.value[props.index][props.type] = Math.floor(possibleValue);
 };
+
+watch(sliderValue, (value) => {
+  console.log(value);
+  const { y: mouseY } = useMouse();
+  // map function beni stuff find de richtig wert
+  //fillerBottom.value = useMap(mouseY, 0, 100, -180, 0);
+  fillerBottom.value = mouseY;
+  balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
+});
 
 const onMouseMove = (event) => {
   if (sliderRef.value) {
@@ -126,5 +128,10 @@ onUnmounted(() => {
   height: 238px;
   border-radius: 0;
   background-image: url("/filler3.svg");
+}
+.label {
+  position: absolute;
+  bottom: -10px;
+  font-size: small;
 }
 </style>
