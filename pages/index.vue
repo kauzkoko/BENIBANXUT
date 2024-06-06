@@ -61,6 +61,9 @@
         <RedButton />
         <RedButtonMacBook />
       </div>
+      <button @click="sendSerial()" class="fixed bottom-0 left-0">
+        send serial test
+      </button>
     </div>
   </div>
 </template>
@@ -83,6 +86,11 @@ const addBalken = () => {
       duration: 40,
       decay: 40,
     });
+};
+
+const sendSerial = async () => {
+  console.log("send serial");
+  await $fetch("/api/serial");
 };
 </script>
 

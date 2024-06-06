@@ -12,6 +12,7 @@
   "dependencies": {
     "@unocss/reset": "^0.60.4",
     "nuxt": "^3.11.2",
+    "serialport": "^12.0.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
   },
