@@ -41,7 +41,8 @@ const updateSlider = (event) => {
     Math.min(100, ((winHeight - offsetY) / winHeight) * 100)
   );
   let possibleValue = 285 - y.value - rect.top;
-  fillerBottom.value = test < -200 ? -200 : test > 0 ? 0 : test;
+  fillerBottom.value =
+    possibleValue < -200 ? -200 : possibleValue > 0 ? 0 : possibleValue;
 };
 
 watch(sliderValue, (value) => {
