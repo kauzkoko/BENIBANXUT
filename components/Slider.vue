@@ -13,6 +13,8 @@ const sliderRef = ref(null);
 const fillerBottom = ref(-95);
 const store = useGstore();
 const { balkenArray } = storeToRefs(store);
+const { y } = useMouse();
+const { height } = useWindowSize();
 
 const props = defineProps({
   text: {
@@ -32,18 +34,22 @@ const props = defineProps({
 const updateSlider = (event) => {
   const rect = sliderRef?.value.getBoundingClientRect();
   const offsetY = event.clientY - rect.top;
-  const height = rect.height;
+  console.log(y.value - rect.top);
+  const winHeight = rect.height;
   sliderValue.value = Math.max(
     0,
-    Math.min(100, ((height - offsetY) / height) * 100)
+    Math.min(100, ((winHeight - offsetY) / winHeight) * 100)
   );
+  let possibleValue = 285 - y.value - rect.top;
+  fillerBottom.value = test < -200 ? -200 : test > 0 ? 0 : test;
 };
 
 watch(sliderValue, (value) => {
-  console.log(value);
+  // console.log(value);
   // map function beni stuff find de richtig wert
-  fillerBottom.value = useMap(value, 0, 100, -180, 0);
-  balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
+  // fillerBottom.value = useMap(y.value, 0, height.value, 0, -238);
+  // fillerBottom.value = useMap(y.value, 0, height.value, 0, -238);
+  // balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
 });
 
 const onMouseMove = (event) => {
