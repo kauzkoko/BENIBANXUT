@@ -43,15 +43,8 @@ const updateSlider = (event) => {
   let possibleValue = 285 - y.value - rect.top;
   fillerBottom.value =
     possibleValue < -200 ? -200 : possibleValue > 0 ? 0 : possibleValue;
+  balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
 };
-
-watch(sliderValue, (value) => {
-  // console.log(value);
-  // map function beni stuff find de richtig wert
-  // fillerBottom.value = useMap(y.value, 0, height.value, 0, -238);
-  // fillerBottom.value = useMap(y.value, 0, height.value, 0, -238);
-  // balkenArray.value[props.index][props.type] = Math.floor(sliderValue.value);
-});
 
 const onMouseMove = (event) => {
   if (sliderRef.value) {
